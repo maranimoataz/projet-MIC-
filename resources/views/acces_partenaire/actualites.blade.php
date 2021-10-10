@@ -38,9 +38,11 @@
                         <h1 class="m-md-5 p-5" style="font-size: 40px;">Actualités</h1>
                         <div class="row pb-5">
                             <div class="pb-3 align-self-center col-sm-12 col-md-8 offset-md-1">
+                            <center>
                                 <form action="/acces_partenaire/actualites" method="get">
-                                    <input class="form-control" type="text" name="q" placeholder="Rechercher une actualité">
+                                    <input style="width:40%; height:40%;"class="form-control" type="text" name="q" placeholder="Rechercher une actualité">
                                 </form>
+                            </center>
                             </div>
                             <div class="pb-3 col-sm-12 col-md-2 d-grid gap-2">
                                 <button type="button" class="btn btn-outline-secondary btn-lg" data-bs-toggle="modal" data-bs-target="#add_actualite">
@@ -251,9 +253,9 @@
                                             <td>{{$actualite->importance}}</td>
                                             <td>{{$actualite->type == 'evenement' ? 'Événement' : 'Actualité'}}</td>
                                             <td class="w-25">
-                                                <a class="btn btn-success" href="/actualites/{{$actualite->id}}">Afficher</a>
-                                                <a class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#update_actualite" onclick="getUpdatingActualite({{$actualite->id}},'{{$actualite->titre}}','{{$actualite->date}}','{{$actualite->resume}}', {{$actualite->importance}},'{{$actualite->type}}')">Modifier</a>
-                                                <a class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#delete_actualite" onclick="getDeletingActualite({{$actualite->id}},'{{$actualite->titre}}')">Supprimer</a>
+                                                <a class="btn btn-success" href="/actualites/{{$actualite->id}}">Afficher</a> <br /> <br />
+                                                <a class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#update_actualite" onclick="getUpdatingActualite({{$actualite->id}},'{{$actualite->titre}}','{{$actualite->date}}','{{$actualite->resume}}', {{$actualite->importance}},'{{$actualite->type}}')">Modifier</a> <br /> <br />
+                                                <a class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#delete_actualite" onclick="getDeletingActualite({{$actualite->id}},'{{$actualite->titre}}')">Supprimer</a><br /> <br />
                                             </td>
                                         </tr>
                                     @endforeach

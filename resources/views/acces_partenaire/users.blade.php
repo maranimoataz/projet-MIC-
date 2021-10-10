@@ -36,7 +36,9 @@
                         <div class="row pb-5">
                             <div class="pb-3 align-self-center col-sm-12 col-md-8 offset-md-1">
                                 <form action="/acces_partenaire/users" method="get">
-                                    <input class="form-control" type="text" name="q" placeholder="Rechercher un utilisateur">
+                                <center>
+                                    <input style="width:50%; height:50%;" class="form-control" type="text" name="q" placeholder="Rechercher un utilisateur">
+                                </center>
                                 </form>
                             </div>
                             <div class="pb-3 col-sm-12 col-md-2 d-grid gap-2">

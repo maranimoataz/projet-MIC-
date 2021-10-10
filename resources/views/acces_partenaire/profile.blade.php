@@ -16,7 +16,8 @@
                     <div class="modal-content">
                         <div class="modal-header">
                             <h4 class="modal-title" id="update_user_label"><b>Modifier votre profile</b></h4>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                            </button>
                         </div>
                         <form class="form-outline" method="post" action="/profile/edit">
                             @csrf
@@ -30,6 +31,12 @@
                                 </div>
                                 <div class="mb-3 row align-middle">
                                     <label class="col-sm-2 col-form-label">Mot de passe</label>
+                                    <div class="col-sm-10">
+                                        <input type="password" name="password" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="mb-3 row align-middle">
+                                    <label class="col-sm-2 col-form-label">confirmation de mot de passe</label>
                                     <div class="col-sm-10">
                                         <input type="password" name="password" class="form-control">
                                     </div>
@@ -57,9 +64,13 @@
                     <div class="card card-body bg-light align-self-center">
                         <h1 class="m-md-5 p-5" style="font-size: 40px;">Profile</h1>
                         <div class="row">
-                            <div class="col-sm-12 col-md-3 offset-md-9 pb-5">
-                                <button class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#update_user">Modifier votre profile</button>
+                        <center>
+                            <div>
+                                <button class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#update_user" style="height:50% width:50%">Modifier votre profile
+                                </button>
                             </div>
+                        <center>
+                        <br /> <br />
                         </div>
                         <div class="row border-bottom" style="margin: 0px 40px 15px 40px">
                             <label class="col-sm-4 col-form-label">N°Identité</label>
@@ -83,12 +94,6 @@
                             <label class="col-sm-4 col-form-label">E-mail</label>
                             <div class="col-sm-6" style="color: #e9c46a;">
                                 {{ Auth::user()->email }}
-                            </div>
-                        </div>
-                        <div class="row border-bottom" style="margin: 0px 40px 15px 40px">
-                            <label class="col-sm-4 col-form-label">Mot de passe</label>
-                            <div class="col-sm-6" style="color: #e9c46a;">
-                                ********
                             </div>
                         </div>
                         <div class="row" style="margin: 0px 40px 0px 40px">

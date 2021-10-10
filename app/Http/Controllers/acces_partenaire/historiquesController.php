@@ -16,7 +16,7 @@ class historiquesController extends Controller
         if(isset($_GET['q'])){
             $historiques = historique::where('action','LIKE','%'.$_GET['q'].'%')->orderByDesc('id')->paginate(30);
         }
-        else $historiques = historique::orderByDesc('id')->paginate(50);
+        else $historiques = historique::orderByDesc('id')->paginate(5);
         return view('acces_partenaire.historiques', compact('historiques'));
     }
 }

@@ -18,8 +18,11 @@
                         <div class="row pb-5">
                             <div class="align-self-center col-sm-11 col-md-8 offset-md-2">
                                 <form action="/acces_partenaire/historiques" method="get">
-                                    <input class="form-control" type="text" name="q" placeholder="Rechercher un historique">
+                                <center>
+                                    <input style="width:50%; height:50%;"class="form-control" type="text" name="q" placeholder="Rechercher un historique">
+                                </center>
                                 </form>
+                                <br /><br />
                             </div>
                             @if(!$historiques->count())
                                 <div class='row align-self-center m-5'>

@@ -29,9 +29,11 @@
                         <h1 class="m-md-5 p-5" style="font-size: 40px;">Productions scientifiques</h1>
                         <div class="row pb-5">
                             <div class="pb-3 align-self-center col-sm-12 col-md-8 offset-md-1">
+                            <center>
                                 <form action="/acces_partenaire/productions" method="get">
-                                    <input class="form-control" type="text" name="q" placeholder="Rechercher une production">
+                                    <input style="height:50%; width:50%;" class="form-control" type="text" name="q" placeholder="Rechercher une production">
                                 </form>
+                            </center>
                             </div>
                             <div class="pb-3 col-sm-12 col-md-2 d-grid gap-2">
                                 <button type="button" class="btn btn-outline-secondary btn-lg" data-bs-toggle="modal" data-bs-target="#add_production">
@@ -172,9 +174,9 @@
                                             <td class="w-25 text-start">{{substr($production->resume,0,strpos($production->resume, ' ', 130))}}...</td>
                                             <td><a href="{{$production->lien}}">{{substr($production->lien,0,20)}}...</a></td>
                                             <td class="w-25">
-                                                <a class="btn btn-success" href="/productions/{{$production->id}}">Afficher</a>
-                                                <a class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#update_production" onclick="getUpdatingProduction({{$production->id}},'{{$production->titre}}','{{$production->resume}}', '{{$production->lien}}')">Modifier</a>
-                                                <a class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#delete_production" onclick="getDeletingProduction({{$production->id}},'{{$production->titre}}')">Supprimer</a>
+                                                <a class="btn btn-success" href="/productions/{{$production->id}}">Afficher</a> <br /> <br />
+                                                <a class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#update_production" onclick="getUpdatingProduction({{$production->id}},'{{$production->titre}}','{{$production->resume}}', '{{$production->lien}}')">Modifier</a> <br /> <br />
+                                                <a class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#delete_production" onclick="getDeletingProduction({{$production->id}},'{{$production->titre}}')">Supprimer</a> <br /> <br />
                                             </td>
                                         </tr>
                                     @endforeach

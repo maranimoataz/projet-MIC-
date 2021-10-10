@@ -22,7 +22,8 @@ class profileController extends Controller
     public function edit(){
         $data = \request()->validate([
             'email' => ['required', 'string', 'email', 'max:255'],
-            'password' => ['required', 'string', 'min:8']
+            'password' => ['required', 'string', 'min:8'],
+            'confirm_password' => ['required','same:password','min:6']
         ]);
         User::findOrFail(\request()->user()->id)->update($data);
         historique::create([
