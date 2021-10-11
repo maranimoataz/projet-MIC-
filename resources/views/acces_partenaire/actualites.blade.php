@@ -7,6 +7,7 @@
         <meta content="" name="description">
         <meta content="" name="keywords">
         @include('components.css')
+
     </head>
     <body>
         @include('components.nav')
@@ -35,14 +36,13 @@
                 @enderror
                 <div class="justify-content-center row">
                     <div class="card card-body col-sm-12 col-md-10 bg-light align-self-center">
+                    <img src="img/journal.png" />
                         <h1 class="m-md-5 p-5" style="font-size: 40px;">Actualités</h1>
                         <div class="row pb-5">
                             <div class="pb-3 align-self-center col-sm-12 col-md-8 offset-md-1">
-                            <center>
                                 <form action="/acces_partenaire/actualites" method="get">
-                                    <input style="width:40%; height:40%;"class="form-control" type="text" name="q" placeholder="Rechercher une actualité">
+                                    <input class="form-control" type="text" name="q" placeholder="Rechercher une actualité">
                                 </form>
-                            </center>
                             </div>
                             <div class="pb-3 col-sm-12 col-md-2 d-grid gap-2">
                                 <button type="button" class="btn btn-outline-secondary btn-lg" data-bs-toggle="modal" data-bs-target="#add_actualite">
@@ -52,8 +52,8 @@
                         </div>
 
                         <!-- New actualite Modal -->
-                        <div class="modal fade" id="add_actualite" tabindex="-1" aria-labelledby="add_actualite_label" aria-hidden="true">
-                            <div class="modal-dialog">
+                        <div class="modal fade" id="add_actualite" tabindex="-1" aria-labelledby="add_actualite_label" aria-hidden="true" >
+                            <div class="modal-dialog modal-lg" >
                                 <div class="modal-content">
                                     <div class="modal-header">
                                         <h4 class="modal-title" id="add_actualite_label"><b>Ajouter une nouvelle actualite</b></h4>
@@ -62,7 +62,7 @@
                                     <form class="form-outline" method="post" action="/acces_partenaire/actualites/create" enctype="multipart/form-data">
                                         @csrf
                                         <div class="modal-body">
-                                            <div class="mb-3 row">
+                                            <div class="mb-3 row" >
                                                 <label class="col-sm-3 col-form-label">Titre</label>
                                                 <div class="col-sm-8">
                                                     <input type="text" name="titre" class="form-control">
@@ -71,7 +71,24 @@
                                             <div class="mb-3 row">
                                                 <label class="col-sm-3 col-form-label">Resumé</label>
                                                 <div class="col-sm-8">
-                                                    <input type="text" name="resume" class="form-control">
+                                                    <textarea type="text" name="resume" class="form-control"></textarea>
+
+                                                    <script src="{{ asset('node_modules/tinymce/tinymce.js') }}"></script>
+                                                    <script>
+                                                        tinymce.init({
+                                                            selector: 'textarea',
+                                                            height: 300,
+                                                            plugins: [
+                                                                'advlist autolink lists link image charmap print preview anchor',
+                                                                'searchreplace visualblocks code fullscreen',
+                                                                'insertdatetime media table paste code help wordcount'
+                                                            ],
+                                                            toolbar: 'undo redo | formatselect | ' +
+                                                                'bold italic backcolor | alignleft aligncenter ' +
+                                                                'alignright alignjustify | bullist numlist outdent indent | ' +
+                                                                'removeformat | help',
+                                                        });
+                                                    </script>
                                                 </div>
                                             </div>
                                             <div class="mb-3 row">
@@ -249,13 +266,13 @@
                                             <td><img src="<?php echo url('/'); ?>/{{$actualite->img}}" style="width: 100px; height: 100px;"></td>
                                             <td>{{$actualite->titre}}</td>
                                             <td>{{$actualite->date}}</td>
-                                            <td class="w-25 text-start">{{substr($actualite->resume,0,strpos($actualite->resume, ' ', 130))}}...</td>
+                                            <td class="w-25 text-start">{{strip_tags(implode(' ', array_slice(explode(' ', $actualite->resume),  0, 30)))}} ...</td>
                                             <td>{{$actualite->importance}}</td>
                                             <td>{{$actualite->type == 'evenement' ? 'Événement' : 'Actualité'}}</td>
                                             <td class="w-25">
-                                                <a class="btn btn-success" href="/actualites/{{$actualite->id}}">Afficher</a> <br /> <br />
-                                                <a class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#update_actualite" onclick="getUpdatingActualite({{$actualite->id}},'{{$actualite->titre}}','{{$actualite->date}}','{{$actualite->resume}}', {{$actualite->importance}},'{{$actualite->type}}')">Modifier</a> <br /> <br />
-                                                <a class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#delete_actualite" onclick="getDeletingActualite({{$actualite->id}},'{{$actualite->titre}}')">Supprimer</a><br /> <br />
+                                                <a class="btn btn-success" href="/actualites/{{$actualite->id}}">Afficher</a>
+                                                <a class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#update_actualite" onclick="getUpdatingActualite({{$actualite->id}},'{{$actualite->titre}}','{{$actualite->date}}','{{$actualite->resume}}', {{$actualite->importance}},'{{$actualite->type}}')">Modifier</a>
+                                                <a class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#delete_actualite" onclick="getDeletingActualite({{$actualite->id}},'{{$actualite->titre}}')">Supprimer</a>
                                             </td>
                                         </tr>
                                     @endforeach

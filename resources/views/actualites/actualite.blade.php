@@ -47,7 +47,7 @@
                           <h2 class="pt-5 px-5 text-start">Date : {{$actualite->date}}</h2>
                       </div>
                       <div class="mx-lg-5">
-                        <h3 class="p-5 text-start">{{$actualite->resume}}</h3>
+                        <h3 class="p-5 text-start">{!! $actualite->resume !!}</h3>
                       </div>
                   </div>
               </div>
