@@ -54,7 +54,7 @@
                             <div class="modal-dialog" style="max-width: 650px;">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h4 class="modal-title" id="add_user_label"><b>Ajouter un nouveau utilisaeur</b></h4>
+                                        <h4 class="modal-title" id="add_user_label"><b>Ajouter un nouveau utilistaeur</b></h4>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
                                     <form class="form-outline" method="post" action="/acces_partenaire/users/create">
