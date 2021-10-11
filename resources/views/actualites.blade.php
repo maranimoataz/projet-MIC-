@@ -66,7 +66,9 @@
                                   </div>
                                   @if($search_text != '')
                                       <div class="col-2 d-none">
-                                          <input type="text" class="form-control-lg" name="q" value="{{$search_text}}">
+                                          <label>
+                                              <input type="text" class="form-control-lg" name="q" value="{{$search_text}}">
+                                          </label>
                                       </div>
                                   @endif
                               </form>
@@ -84,7 +86,7 @@
                                       <p class="fs-6 px-4 pt-0 mt-0" style="color: #bbbbbb">{{Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $actualite->created_at)->diffForHumans()}}</p>
                                       <div class="entry-content">
                                           <h4>
-                                              {{substr($actualite->resume,0,strpos($actualite->resume, ' ', 100))}}...
+                                              {{strip_tags(implode(' ', array_slice(explode(' ', $actualite->resume),  0, 30)))}} ...
                                           </h4>
                                           <div class="entry-meta text-start pt-3">
                                               <ul class="row">
@@ -108,7 +110,9 @@
                     <h3 class="sidebar-title">Rechercher</h3>
                     <div class="sidebar-item search-form">
                         <form action="\actualites" method="get">
-                            <input type="text" name="q" placeholder="Rechercher une actualité" value="{{$search_text}}">
+                            <label>
+                                <input type="text" name="q" placeholder="Rechercher une actualité" value="{{$search_text}}">
+                            </label>
                             <button type="submit"><i class="icofont-search"></i></button>
                         </form>
                     </div>
