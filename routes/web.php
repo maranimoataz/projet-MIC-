@@ -9,6 +9,10 @@ Route::get('/partenaires', function () {
     return view('partenaires');
 });
 
+/*Route::get('/partenaires', function () {
+    return view('partenaires');
+});
+*/
 Route::get('/partenaires/managem', function () {
     return view('partenaires.managem');
 });
